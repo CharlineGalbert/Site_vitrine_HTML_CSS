@@ -1,0 +1,270 @@
+<!DOCTYPE html>  <!--balise auto-fermante : pas besoin de la fermer-->
+<!--Déclaration du type de document-->
+
+<html lang="fr_Fr"> <!--ouverture de la balise HTML-->
+
+    <head> <!--indentation pour plus de visibilité-->
+        <!--configuration de la page-->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ma première page HTML</title>
+        <link rel="stylesheet" href="./styles/main.css">  <!--on appelle le css au début-->
+        <script src="https://kit.fontawesome.com/8a8648f5df.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!--contenu de la page-->
+     
+        <header class="navbar">
+            <!--en-tête du contenu / du body-->
+            <nav class="navbar-content container">  <!--on attribue 2 class sur une balise-->
+                <a href="index.html"> <!--URL relative de la page d'accueil-->
+                   <img class="logo" src="./images/brand.svg" alt="logo"> <!--attribut alt : pour l'accessibilité des personnes mal/non-voyantes-->
+                </a>
+                <div class="navbar-links">
+                    <a class="link-burger">
+                        <span class="navbar-burger"> </span>  <!--le span a un display inline-bloc par défaut -> mieux qu'une div dans ce cas-->
+                    </a>
+                    <ul>
+                        <li><a href="#contact">Contact</a></li> <!--ancre de page fonctionne grace à un id-->
+                        <li><a href="#profil">Profil</a></li>
+                    </ul>
+                </div>
+                
+                
+            </nav>
+        </header>
+
+        <main>
+            <!--corps du contenu (contenu principal)-->
+            <section class="banner">  <!--section.banner-->
+                <div class="banner-header">
+                    <h1>Ma première page HTML</h1>
+                    <hr class="separator">
+                    <p>Ce site est développé en HTML5 et CSS3</p>
+                </div>
+            </section>
+            <section class="container feature">
+                <h2>Présentation des features</h2>
+                <hr class="separator middle">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, necessitatibus!</p> 
+                <div class="features-list">
+                    <div class="card">
+                        <div class="card-img-overflow">
+                            <img class="card-img"src="https://pierre-bertrand-webmarketing.com/media/cache/resolve/projet_thumb_large/images/offres/presentation-service-6364c13a344df568047569.jpg" alt="pc sur bureau avec tasse" loading="lazy">
+                        </div>                        
+                        <div class="card-body">
+                            <h3>HTML 5</h3>
+                            <p>Ce site est dev en HTML 5</p>
+                            <a href="#"class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img-overflow">
+                            <img class="card-img"src="https://pierre-bertrand-webmarketing.com/media/cache/resolve/projet_thumb_large/images/offres/presentation-service-6364c13a344df568047569.jpg" alt="pc sur bureau avec tasse" loading="lazy">
+                        </div>                        
+                        <div class="card-body">
+                            <h3>HTML 5</h3>
+                            <p>Ce site est dev en HTML 5</p>
+                            <a href="#"class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img-overflow">
+                            <img class="card-img"src="https://pierre-bertrand-webmarketing.com/media/cache/resolve/projet_thumb_large/images/offres/presentation-service-6364c13a344df568047569.jpg" alt="pc sur bureau avec tasse" loading="lazy">
+                        </div>                        
+                        <div class="card-body">
+                            <h3>HTML 5</h3>
+                            <p>Ce site est dev en HTML 5</p>
+                            <a href="#"class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img-overflow">
+                            <img class="card-img"src="https://pierre-bertrand-webmarketing.com/media/cache/resolve/projet_thumb_large/images/offres/presentation-service-6364c13a344df568047569.jpg" alt="pc sur bureau avec tasse" loading="lazy">
+                        </div>                        
+                        <div class="card-body">
+                            <h3>HTML 5</h3>
+                            <p>Ce site est dev en HTML 5</p>
+                            <a href="#"class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img-overflow">
+                            <img class="card-img"src="https://pierre-bertrand-webmarketing.com/media/cache/resolve/projet_thumb_large/images/offres/presentation-service-6364c13a344df568047569.jpg" alt="pc sur bureau avec tasse" loading="lazy">
+                        </div>                        
+                        <div class="card-body">
+                            <h3>HTML 5</h3>
+                            <p>Ce site est dev en HTML 5</p>
+                            <a href="#"class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img-overflow">
+                            <img class="card-img"src="https://pierre-bertrand-webmarketing.com/media/cache/resolve/projet_thumb_large/images/offres/presentation-service-6364c13a344df568047569.jpg" alt="pc sur bureau avec tasse" loading="lazy">
+                        </div>                        
+                        <div class="card-body">
+                            <h3>HTML 5</h3>
+                            <p>Ce site est dev en HTML 5</p>
+                            <a href="#"class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="container profile" id="profil">
+                <h2>Profil</h2>
+                <hr class="separator middle">
+                <div class="section-profile">
+                    <img class="img-profile" src="./images/img-profil.png" alt="personnage devant son ordinateur">
+                    <div class="profile-description">
+                        <h3>Qui suis-je ?</h3>
+                        <h3 class="profile-subtitle">Charline Galbert</h3>
+                        <em>29ans</em>  <!--em pour emphase-->
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, rem eveniet omnis, nam numquam dolores veritatis quia, sed odio tempore ullam debitis atque earum veniam animi autem voluptates expedita. Esse.</p>
+                        <p>Ratione quis cupiditate minima adipisci voluptatem architecto fugiat reiciendis atque magni aut accusamus unde, totam reprehenderit quae officia nisi natus eligendi suscipit. Unde laudantium provident iste! Aut, quae ut! Perspiciatis?</p>
+                        <p>Voluptatum porro <span class="text-red">eaque totam perspiciatis?</span> Impedit sed, fugiat nemo saepe molestiae repudiandae iure. Officiis officia asperiores temporibus nemo rem. Placeat soluta est in, quasi consequuntur odio quidem quos! Sequi, porro.</p>
+                        <ul class="label-list">
+                            <li><i class="fa-solid fa-tag"></i> HTML</li> <!-- balise i + class : tirés de fontawsome-->
+                            <li><i class="fa-solid fa-tag"></i> CSS</li>
+                            <li><i class="fa-solid fa-tag"></i> JS</li>
+                            <li><i class="fa-solid fa-tag"></i> PHP</li>
+                            <li><i class="fa-solid fa-tag"></i> Python</li>
+                            <li><i class="fa-solid fa-tag"></i> SQL</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cv-list">
+                    <div class="cv-card">
+                        <span>
+                            <i class="fas fa-medal"></i> <!-- balise i + class : tirés de fontawsome-->
+                        </span>
+                        <h2>Mars 2023</h2>
+                        <div class="cv-details">
+                            <i class="fa-regular fa-file-code"></i>
+                            <div class="cv-informations">
+                                <h3>Développeur Fullstack</h3>
+                                <h3>Facebook</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cv-card">
+                        <span>
+                            <i class="fas fa-medal"></i> <!-- balise i + class : tirés de fontawsome-->
+                        </span>
+                        <h2>Mars 2023</h2>
+                        <div class="cv-details">
+                            <i class="fa-regular fa-file-code"></i>
+                            <div class="cv-informations">
+                                <h3>Développeur Fullstack</h3>
+                                <h3>Facebook</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cv-card">
+                        <span>
+                            <i class="fas fa-medal"></i> <!-- balise i + class : tirés de fontawsome-->
+                        </span>
+                        <h2>Mars 2023</h2>
+                        <div class="cv-details">
+                            <i class="fa-regular fa-file-code"></i>
+                            <div class="cv-informations">
+                                <h3>Développeur Fullstack</h3>
+                                <h3>Facebook</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cv-card">
+                        <span>
+                            <i class="fas fa-medal"></i> <!-- balise i + class : tirés de fontawsome-->
+                        </span>
+                        <h2>Mars 2023</h2>
+                        <div class="cv-details">
+                            <i class="fa-regular fa-file-code"></i>
+                            <div class="cv-informations">
+                                <h3>Développeur Fullstack</h3>
+                                <h3>Facebook</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="container apropos">
+                <h2>À propos</h2>
+                <hr class="separator middle">
+                <div class="a_propos">
+                    <div class="a_propos-paragraphe">
+                        <h3>Pourquoi nous choisir</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quos numquam earum consectetur tempora error. Ratione ea molestias ut facere quod repudiandae nam, assumenda nisi dignissimos quo a doloremque totam?</p>
+                        <p>Sapiente autem adipisci tempora! Quod neque quis adipisci quisquam excepturi. Iste non nemo ducimus, sit ipsum atque quasi consequuntur quis animi illo esse, nulla in beatae quaerat, quia doloremque ullam.</p>
+                        <p>Aliquam ducimus dicta facilis impedit. Atque saepe nihil, quibusdam voluptate quasi architecto quis officiis, distinctio unde aliquid ducimus vero eligendi doloribus voluptatem! Corrupti dolorum minima, nisi recusandae consequuntur nemo! At.</p>
+                        <a href="#"class="btn btn-primary">En savoir plus</a>
+                    </div>
+                    <div class="a_propos-image">
+                        <img class="a_propos-img" src="https://pierre-bertrand-webmarketing.com/media/cache/resolve/projet_thumb_large/images/offres/presentation-service-6364c13a344df568047569.jpg" alt="photo d'un laptop sur un bureau" loading="lazy">
+                        <div class="bg-square-about-1"></div>
+                        <div class="bg-square-about-2"></div>
+                    </div>
+                </div>
+                <div class="a_propos reverse">
+                    <div class="a_propos-paragraphe">
+                        <h3>Pourquoi nous choisir</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quos numquam earum consectetur tempora error. Ratione ea molestias ut facere quod repudiandae nam, assumenda nisi dignissimos quo a doloremque totam?</p>
+                        <p>Sapiente autem adipisci tempora! Quod neque quis adipisci quisquam excepturi. Iste non nemo ducimus, sit ipsum atque quasi consequuntur quis animi illo esse, nulla in beatae quaerat, quia doloremque ullam.</p>
+                        <p>Aliquam ducimus dicta facilis impedit. Atque saepe nihil, quibusdam voluptate quasi architecto quis officiis, distinctio unde aliquid ducimus vero eligendi doloribus voluptatem! Corrupti dolorum minima, nisi recusandae consequuntur nemo! At.</p>
+                        <a href="#"class="btn btn-primary">En savoir plus</a>
+                    </div>
+                    <div class="a_propos-image">
+                        <img class="a_propos-img" src="https://pierre-bertrand-webmarketing.com/media/cache/resolve/projet_thumb_large/images/offres/presentation-service-6364c13a344df568047569.jpg" alt="photo d'un laptop sur un bureau" loading="lazy">
+                        <div class="bg-square-about-1"></div>
+                        <div class="bg-square-about-2"></div>
+                    </div>
+                </div>
+            </section>
+            <section id="contact" class="contact_section">
+                <div class="container">
+                    <h2>Restons en contact</h2>
+                    <hr class="separator middle">
+                        <div class="contact_content">
+                            <div class="contact_paragraphe">
+                                <p>Vous pouvez nous contacter, nous vous répondrons dans les plus brefs délais.</p>
+                                <p>Remplissez tous les champs dans le formulaire de contact sur le côté.</p>
+                            </div>
+                            <div class="contact_formulaire">
+                                <div class="bg-contact-form-1"></div>
+                                <div class="bg-contact-form-2"></div>
+                                <form action="#" method="GET" class="contact_form">
+                                    <h3>Envoyez nous un message</h3>
+                                    
+                                    <div class="input-group">
+                                        <label for="e-mail">Email :</label>
+                                        <input type="email" name="e-mail" placeholder="John-doe@example.com" required> <!--le champs peut accueillir une adresse mail-->
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="subject">Sujet :</label>
+                                        <input type="text" name="subject" placeholder="Sujet de votre message" required> <!--input de type text -> pour des textes courts-->
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="message">Message :</label>
+                                        <textarea name="message" placeholder="Contenu de votre message" rows="5" cols="50" required></textarea>
+                                        <!-- balise textarea -> utilisable pour un texte long -->
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                                    <!-- submit pas obligatoire -->
+                                </form>
+                            </div> 
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <!--pied de page du contenu-->
+            <p>Made with <i class="fa-solid fa-heart"></i> by CCI Beaujolais</p>
+        </footer>
+
+        <script src="./js/index.js"></script>
+        <!--on appelle le js une fois que la page est déjà chargée-->
+    </body>
+
+</html>

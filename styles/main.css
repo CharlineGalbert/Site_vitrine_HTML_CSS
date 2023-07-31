@@ -1,0 +1,737 @@
+/****************** IMPORT FONT *********************/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');  /*police en distant*/
+
+@font-face {  /*police en local*/
+    font-family: 'Foobar';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Foobar'), url('../fonts/Foobar\ Pro-Regular.woff') format('woff');
+    font-display: swap; /*pour réduire le temps de chargement*/
+    }
+
+/****************** VARIABLES DEFINITION  *********************/
+
+:root {   /*on créer des variables pour la couleur et autres...*/
+    --primary:#95D1CC;
+    --secondary: #22577E;
+    --white: #f9f9f9;
+    --border-radius: 5px;
+    --box-shadow-default: 1px 1px 30px -10px rgba(0,0,0,.7); /*décalage x,y,flou,profondeur/épaisseur - opacité 0.7*/
+
+}
+
+/****************** RESET CSS DEFAULT *********************/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/****************** STRUCTURE *********************/
+html,
+body {   /*on cible la balise body*/
+    background-color:var(--white);
+    font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
+    color: var(--secondary); /*on appelle la variable correspondant à la couleur*/
+    margin-bottom: 15px;
+    line-height: 120%;
+    font-family: "Foobar";
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2.2em;
+}
+
+h3 {
+    font-size: 1.8em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.container {
+    width: 90%;
+    margin: auto; /*margin = marge extérieure*/
+}
+
+section:not(:first-child) {  /*toutes les sections sauf le 1er enfant*/
+    margin: 2em auto;
+}
+
+p:not(:last-of-type), em { /*tous les paragraphes p sauf le dernier - appliqué aussi aux balises em*/
+    margin-bottom: 1em;
+}
+
+em {
+    display: inline-block;
+}
+
+.btn {
+    padding: .5em 1em;
+    border-radius: var(--border-radius);
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    transition: all .4s ease-in-out /*toutes les transitions prendront 0,4sec à s'effectuer avec une vitesse linéaire*/
+}
+
+.btn-primary:hover {  /*speudo class pour définir un état au survol de la souris*/
+    background-color: #59afa8;
+}
+
+/****************** NAVBAR *********************/
+
+
+    
+.navbar {   /*pour la class*/
+    background-color: var(--primary);
+    position: sticky; /*il faut lui définir sa position de base*/
+    top: 0; /*commence à 0px du haut de la fenêtre*/
+    width: 100%;
+    z-index: 999;
+}
+
+.navbar-content {
+    padding: 10px 0;  /*10 pixels en haut et en bas - 0 pixel à droite et gauche */    /*padding = marge intérieure*/
+    display: flex;
+    justify-content: space-between;  /*ne fonctionne que s'il y a display flex avant*/
+    align-items: center; /*ne fonctionne que s'il y a display flex avant*/
+}
+
+.logo {
+    width: 50px;
+}
+
+.navbar-links ul {
+    display: flex;
+    gap: 15px; /*mettre 15px entre chaque enfant*/
+    list-style: none;  /*pour ne pas avoir les puces sur la liste*/
+}
+
+.navbar-burger {
+    display: inline-block; /*display block permet de définir une hauteur et largeur - display inline -> le bloc ne prend pas toute la largeur*/
+    width: 30px;
+    height: 3px;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    position: relative;
+    transition: all .4s ease;
+}
+
+.navbar-burger::before, .navbar-burger::after {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 3px;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    position: absolute;
+    transition: all .4s ease;
+}
+
+.navbar-burger::before {
+    top: -8px;
+}
+
+.navbar-burger::after {
+    top: 8px;
+}
+
+.link-burger {
+    display: none;
+}
+
+.link-burger.open .navbar-burger {
+    background: transparent;
+}
+
+.link-burger.open .navbar-burger::before {
+    top:0;
+    transform: rotate(45deg);
+}
+
+.link-burger.open .navbar-burger::after {
+    top:0;
+    transform: rotate(-45deg);
+}
+
+@media screen and (max-width:768px) {
+    .link-burger {
+        display: inline-block;
+    }
+    .navbar-links ul {
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--secondary);
+        color: var(--white);
+        gap: 0;
+        transform: scaleY(0); /*pour transformer la navbar à 0px de hauteur -> invisible*/
+        transform-origin: top center ; /*pour préciser d'où part la ytransformation*/
+        transition: transform .4s ease;  /*à faire uniquement pour les transitions de type transform*/
+    }
+
+    .navbar-links ul li {
+        width: 100%;
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    .navbar-links ul li:not(:first-of-type) {
+        border-top: 1px solid var(--white);
+        padding: 1em 0;
+    }
+    .navbar-links ul.open {
+        transform: scaleY(1);
+    }
+}
+
+/****************** BANNER *********************/
+
+.banner {
+    background-image: url('../images/banner-hero.jpeg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: calc(100vh - 68.25px);   /*les chiffres à virgule avec un .*/ /*vh = vue utilisateur*/
+    display:flex;
+    justify-content:flex-end;  /*pour le placer à la fin de l'élément parent*/
+    align-items: center;
+    
+}
+
+.banner-header {
+    width: 35%;
+    background-color: rgba(255,255,255,0.6);
+    backdrop-filter: blur(5px); /*pour mettre un flou sur le fond*/
+    -webkit-backdrop-filter: blur(5px); /*pour que ça puisse être pris en compte sur d'autres navigateurs*/
+    border-radius: 5px;
+    padding: 2em;  /*em =unité de mesure responsive design - 1em = ~14px*/
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /*20% d'opacité*/
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-right: 15%;
+}
+
+.banner-header h1 {
+    font-size: 3em;
+}
+
+.banner-header .separator {   /*pour cibler précisément le separator dans le banner-header*/
+    border: none;
+    border-top: 2px solid var(--primary);
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px){
+    .banner {
+        justify-content: center;
+    }
+    .banner-header {
+        width: 80%;
+        margin-right: unset;  /*on enlève ce qu'il y avait en propriété*/
+        text-align: center;
+    }
+}
+
+/****************** FEATURES *********************/
+
+.separator {
+    border: none;
+    border-top: 2px solid var(--primary);
+    margin-bottom: 10px;
+}
+
+.middle {
+    width: 50%;
+}
+
+.features-list {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;  /*si la largeur des enfants est trop importante les cards passeront en dessous*/
+    gap: 1em 0;
+}
+
+.card {
+    width: 300px;
+    background: var(--secondary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.card-img-overflow {
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;  /*doit prendre 100% de l'élément parent --> card*/
+    transition: transform .5s ease-in-out; /*il y a juste le "transform" qui prendra 0,5s*/
+}
+
+.card-img:hover {
+    transform: scale(1.3);
+}
+
+.card-body {
+    padding: 1em;
+    text-align: center;
+}
+
+.card-body h3 {  /*cible les balises h3 qui sont dans la class card-body*/
+    color: var(--primary);
+}
+
+.card-body p {
+    margin-bottom: 1em;
+}
+
+@media screen and (max-width:768px) {
+    .features-list{
+        justify-content: center;
+        
+    }
+    .card {
+        width: 100%;   /*facultatif*/
+    }
+}
+
+/****************** PROFIL *********************/
+
+
+
+.section-profile {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;  /*pour savoir comment aligner les enfants*/
+}
+
+.img-profile {
+    width:30%;
+    object-fit: cover; /*permet de cropper l'image quand elle sera étirée*/
+}
+
+.profile-description {
+    width:65%; /*on se garde 5% de place pour les espaces*/
+}
+
+.profile-subtitle {
+    color: black;
+}
+
+.profile h3 {
+    color: var(--primary);
+}
+
+.profile-description p {
+    text-align: justify;
+}
+
+.profile-description h2 {
+    margin-bottom: 0; 
+}
+
+.text-red {
+    color: red;
+    font-weight: bold;
+}
+
+.label-list {
+    margin-top: 1em;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /*s'il n'y a pas assez de place au niveau du parent --> retour à la ligne*/
+    gap: 1em;  /*pas de space between car s'il n'y a que 2 items il vont être trop espacés*/
+}
+
+.label-list li {
+    background-color: var(--primary);
+    border-radius: var(--border-radius);
+    padding: .5em 1em;
+    box-shadow: var(--box-shadow-default);
+}
+
+.label-list li i {
+    color: var(--secondary);
+}
+
+@media only screen and (max-width: 768px){
+    .section-profile {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        /*
+        ou
+        flex-wrap: wrap;
+        */
+    }
+    .img-profile {
+        width: 90%;  /*ou width: 100% - faire une seule accolade pour les 2 class*/
+    }
+    .profile-description {
+        width: 90%;   /*ou width: 100% - faire une seule accolade pour les 2 class*/
+        margin-top: 2em;
+    }
+    .label-list {
+        justify-content: space-between; /*ou justify-content: center*/
+    }
+    .profile-description {
+        text-align: center;  /*à rajouter dans les lignes au dessus car déjà créé*/
+    }
+}
+
+/****************** CV PROFILE *********************/
+
+.cv-list {
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /*repeat(nb colonnes par ligne, largeur de la colonne =1 fraction) - il faut mettre le display grid avant - pour avoir des colonnes de taille équitable*/
+    gap: 1em; /*espacement entre chaque enfant horizontal et vertical*/
+}
+
+.cv-card {
+    /*height: 100px;*/
+    box-shadow: var(--box-shadow-default);
+    border-radius: var(--border-radius);
+    padding: 50px 0 45px;
+    position: relative;
+    /*la transition se met directement sur l'élément et non sur le élément:hover */
+}
+
+@media only screen and (max-width:768px) { 
+    /*à appliquer jusqu'à atteindre la max-width  --> à appliquer pour les écrans qui font au maximun 768px*/
+    .cv-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.cv-card:hover {
+    background: var(--primary);
+    transform: translateY(-5px);  /*va remonter la card de 5pixels*/
+}
+
+.cv-card span {  /*l'icone sera posé au dessus de la card --> ce n'est pas lui qui définit la hauteur de la card*/
+    font-size: 4.4em; /*ou 70px*/
+    position: absolute;  /* /!\ il faut dire à quel élément la position absolute se rattache car sinon elle se rattache par défaut au body /!\ --> position relative sur cv-card*/
+    top: 50px;  /*décalage depuis le haut de l'élément auquel il se rattache*/
+    right: 5%;
+    color: #5584AC;
+    
+}
+
+.cv-card:hover span {
+    color: var(--white);
+}
+
+.cv-card h2 {
+    background-color: var(--primary);
+    display: inline-block;  /*si juste "inline" on ne pourra pas rajouter de margin ou de padding dessus -> pour pouvoir en mettre il faut qu'il soit en block mais pas block tout seul car sinon le block prend toute la largeur*/
+    padding: 15px 30px;  /*15px en haut et bas et 30px à droite et gauche*/
+    color: #313030;
+    font-size: 1em;
+    border-radius: 0 10px 10px 0;  /*haut gauche - haut droite - bas droite - bas gauche*/
+    margin-bottom: 2em;
+}
+
+.cv-card:hover h2 {
+    color: var(--primary);
+    background-color: var(--white);
+    box-shadow: 0 4px 20px 0 rgba(13, 85, 90, .2);
+    transform: translateY(-3px);
+}
+
+.cv-details {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    color: var(--primary);
+}
+
+.cv-details i {
+    font-size: 5em;
+}
+
+.cv-details h3 {
+    color: var(--primary);
+}
+
+.cv-card, .cv-card span, .cv-card h2, .cv-details, .cv-details h3 {
+    transition: all .4s ease-in-out;
+}
+
+.cv-card:hover .cv-details, .cv-card:hover .cv-details h3 {
+    color: var(--white);
+}
+
+
+/****************** A PROPOS *********************/
+
+
+.a_propos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2em;
+    align-items: center;
+}
+
+
+
+.a_propos-paragraphe {
+    width:50%;
+}
+.a_propos-image {
+    width:40%; /*on se laisse 10% de marge pour le space between*/
+    height: 100%;
+    object-fit: cover; /*permet de cropper l'image quand elle sera étirée*/
+    position: relative;
+    z-index: 0;   /*par défaut sur le z-index 0*/
+}
+
+/*
+.a_propos-image div {
+    background-color: var(--primary);
+    border-radius: var(--border-radius);
+    padding: .5em 1em;
+    width: 100%;
+    height: 100%;
+    top: 20px;  
+    right: 7%;
+    position: absolute;
+    z-index: -1;
+    
+}
+*/
+
+.a_propos-image img {
+    width: 80%;  /*doit prendre 100% de l'élément parent*/
+    border-radius: var(--border-radius);
+    margin: auto;  /*ne fonctionne qu'avec un display block sur l'image*/
+    display: block;
+    box-shadow: var(--box-shadow-default);
+}
+
+.a_propos-paragraphe h3 {
+    color: black;
+    margin-bottom: 1em;
+}
+
+.a_propos-paragraphe a {
+    margin: 2em 0 ;
+    color: var(--white);
+}
+
+.a_propos-paragraphe p {
+    text-align: justify;
+}
+
+.bg-square-about-1 {
+    width: 40%;
+    height: 70%;
+    position: absolute;
+    top: -10%;
+    right: 3%;
+    background: var(--primary);
+    z-index: -1;
+    border-radius: var(--border-radius);
+}
+
+.bg-square-about-2 {
+    width: 70%;
+    height: 90%;
+    position: absolute;
+    bottom: -10%;
+    left: 3%;
+    background: var(--secondary);
+    z-index: -1;
+    border-radius: var(--border-radius);
+}
+
+.a_propos-image {
+    transition: transform .4s ease-in-out;
+}
+
+.a_propos-image:hover img {
+    transform: scale(1.05);
+}
+
+.a_propos-image:hover .bg-square-about-1 {
+    filter: blur(4px);
+}
+
+.a_propos-image:hover .bg-square-about-2 {
+    filter: blur(4px);
+}
+
+.a_propos.reverse { /*popur cibler l'élément qui a les 2 class*/
+    flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 768px){
+    .a_propos {
+        flex-direction: column; /*ou flex-direction: column-reverse*/
+    }
+    .a_propos-image{
+        width: 90%;
+    }
+    .a_propos-paragraphe {
+        width: 90%;
+        text-align: center;
+    }
+    .a_propos-paragraphe h3 {
+        text-align: left;
+    }
+    .a_propos.reverse {  /*on est obligé de reréciser pour ces class car elles ont été filtrées très précisement dans le CSS de départ*/
+        flex-direction: column; /*ou flex-direction: column-reverse*/
+    }
+}
+
+/****************** CONTACT *********************/
+
+section.contact_section{
+    margin: 4em 0 0;  /*marge : en haut  chaque côté  bas*/
+    background: linear-gradient(0deg, var(--primary), var(--secondary));
+    padding: 1em 0;
+}
+
+.contact_section hr{
+    border-color: var(--secondary);
+}
+
+.contact_section h2 {
+    color: var(--primary);
+}
+
+.contact_content {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  /*pour aligner verticalement au milieu*/
+    flex-wrap: wrap;
+}
+
+.contact_paragraphe{
+    /*flex: 0 1 30%;  on peut l'utiliser à la place du width --> adapté au display flex mais plus compliqué à utiliser - se met sur les enfants*/
+    width: 30%;
+}
+
+.contact_formulaire{
+    /*flex: 0 1 60%;*/
+    width: 60%;
+    padding: 5em 0;
+    position: relative;
+}
+
+.contact_form {
+    width: 90%;
+    margin: auto;
+    padding: 1em;
+    background: rgba(255, 255, 255, .2);
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-default);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /*pour que ça puisse être pris en compte sur d'autres navigateurs*/
+}
+
+.bg-contact-form-1, .bg-contact-form-2 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-default);
+    transition: .8s ease;  /*all par défaut*/
+}
+
+.bg-contact-form-1 {
+    top: 8%;
+    left: 0;
+    background: var(--secondary);
+}
+
+.bg-contact-form-2 {
+    bottom: 8%;
+    right: 0;
+    background: var(--primary);
+}
+
+.contact_formulaire:hover .bg-contact-form-1 {
+    transform: translateX(1150%);
+}
+
+.contact_formulaire:hover .bg-contact-form-2 {
+    transform: translateX(-1150%);
+}
+
+.input-group {
+    margin-bottom: 1em;
+    display: grid;
+    grid-template-columns: 10% 80%;
+    gap: 1em;
+}
+
+.contact_form input, .contact_form textarea {
+    width: 100%;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary);
+    padding: 5px;
+}
+
+.contact_form button {
+    display: block;
+    margin: auto;
+}
+
+@media screen and (max-width:768px){
+    .contact_content {
+        display: unset;
+    }
+    .contact_paragraphe{
+        width: 100%;
+        margin-top: 1.5em;
+    }
+    .contact_formulaire {
+        width: 100%;
+    }
+    .input-group {
+        grid-template-columns: 100%;
+    }
+    .contact_formulaire:hover .bg-contact-form-1 {
+        transform: unset;
+    }
+    
+    .contact_formulaire:hover .bg-contact-form-2 {
+        transform: unset;
+    }
+}
+
+/****************** FOOTER *********************/
+
+footer {
+    background: var(--primary);
+    padding: 1em 0;
+    text-align: center;
+}
+
+footer i {
+    font-size: 18px;
+    color: var(--secondary);
+}
